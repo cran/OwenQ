@@ -1,4 +1,4 @@
-b9ad9bc52363f1d2caa61bbbe7222b7b *DESCRIPTION
+8d8c503f22c556d0f6f2d9b72049d551 *DESCRIPTION
 3affde7c98cad0ef42a2b5480038f677 *NAMESPACE
 27b6377efecbef7b97aa8b99bcd8ee20 *NEWS.md
 bda6540755df82416c81063a51640f14 *R/OwenQ.R
@@ -13,10 +13,10 @@ ac3e5f2ee5781ed9ddcd9cf46ed9e482 *README.md
 dd8ab3d02d6f7027a61c57f368f2d6d3 *build/vignette.rds
 c8f26ddcd9596e95b52593294632a356 *inst/doc/OwenQ.R
 406ff47befff0005e08faf4bb1979864 *inst/doc/OwenQ.Rmd
-ff5072851b7c90c92cb396f1a7377dc0 *inst/doc/OwenQ.html
+aaf0c199e53d5d447ffd839d6e6636ec *inst/doc/OwenQ.html
 dc272755255489d88ef63317c27464a1 *inst/doc/Validation.R
 83057d50b7efe8b334ebdaed31594406 *inst/doc/Validation.Rmd
-78de415de0ae18565bb20e43dd0d6478 *inst/doc/Validation.html
+26afd60bb1cc8da5127b67e9ac9a7410 *inst/doc/Validation.html
 b348d536a407c33b6912489ee1ead89a *man/OwenQ1.Rd
 f77ce9d9c78490c4dc6b5c739ed2e2f0 *man/OwenQ2.Rd
 73c280063b0eb52b7ceb2c1567546f45 *man/OwenT.Rd
@@ -24,7 +24,7 @@ d1fb7c6c3fd31f68ce360d49035d9c62 *man/powen.Rd
 8e1b9d3df6f1cac7fc287325e6c52551 *man/psbt.Rd
 7be9c9e57d345f38eeff183ba8fee8c5 *man/ptOwen.Rd
 7721f85bf8673c48a4576fbfdcd6e026 *man/spowen2.Rd
-43b01ba24d94dcb308beae8bd001bdd9 *src/Integration.cpp
+c47d1eba88ad62844208bdaf7aa815ac *src/Integration.cpp
 e3d3cb360fbfdb3c6974e14eb5f09870 *src/Makevars
 be1e662cb63489d18d530245e3e0e314 *src/Makevars.win
 d0f5900da0222c71a5423a6d3f6129c2 *src/Owen.cpp

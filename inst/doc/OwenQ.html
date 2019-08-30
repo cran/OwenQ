@@ -13,7 +13,7 @@
 
 <meta name="author" content="Stéphane Laurent" />
 
-<meta name="date" content="2019-08-27" />
+<meta name="date" content="2019-08-30" />
 
 <title>Owen cumulative functions</title>
 
@@ -306,7 +306,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Owen cumulative functions</h1>
 <h4 class="author">Stéphane Laurent</h4>
-<h4 class="date">2019-08-27</h4>
+<h4 class="date">2019-08-30</h4>
 
 
 <div id="TOC">
@@ -447,12 +447,12 @@ O_4\bigl(n-1, t^\ast_{n-1}(\alpha), -t^\ast_{n-1}(\alpha), \delta_1, \delta_2\bi
 <a class="sourceLine" id="cb6-4" data-line-number="4">delta1 &lt;-<span class="st"> </span>(mu<span class="op">-</span>Delta1)<span class="op">/</span>se; delta2 &lt;-<span class="st"> </span>(mu<span class="op">-</span>Delta2)<span class="op">/</span>se</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co"># probability to get equivalence</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="kw">mean</span>(equivalence)</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">## [1] 0.092754</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">## [1] 0.093238</a>
 <a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">powen4</span>(dof, q, <span class="op">-</span>q, delta1, delta2)</a>
 <a class="sourceLine" id="cb6-9" data-line-number="9">## [1] 0.09300963</a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co"># probability to get inconclusive</span></a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="kw">mean</span>(inconclusive)</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">## [1] 0.901626</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">## [1] 0.901199</a>
 <a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw">ptOwen</span>(q, dof, delta2) <span class="op">-</span><span class="st"> </span><span class="kw">ptOwen</span>(<span class="op">-</span>q, dof, delta1) <span class="op">-</span><span class="st"> </span><span class="kw">powen4</span>(dof, q, <span class="op">-</span>q, delta1, delta2)</a>
 <a class="sourceLine" id="cb6-14" data-line-number="14">## [1] 0.90139</a></code></pre></div>
 </div>
