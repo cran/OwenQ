@@ -1,4 +1,4 @@
-8d8c503f22c556d0f6f2d9b72049d551 *DESCRIPTION
+1c4b779cd499867952e5f2baab4e7fcb *DESCRIPTION
 3affde7c98cad0ef42a2b5480038f677 *NAMESPACE
 27b6377efecbef7b97aa8b99bcd8ee20 *NEWS.md
 bda6540755df82416c81063a51640f14 *R/OwenQ.R
@@ -13,7 +13,7 @@ ac3e5f2ee5781ed9ddcd9cf46ed9e482 *README.md
 dd8ab3d02d6f7027a61c57f368f2d6d3 *build/vignette.rds
 c8f26ddcd9596e95b52593294632a356 *inst/doc/OwenQ.R
 406ff47befff0005e08faf4bb1979864 *inst/doc/OwenQ.Rmd
-aaf0c199e53d5d447ffd839d6e6636ec *inst/doc/OwenQ.html
+282b122d5d03590ee24289aa998195f2 *inst/doc/OwenQ.html
 dc272755255489d88ef63317c27464a1 *inst/doc/Validation.R
 83057d50b7efe8b334ebdaed31594406 *inst/doc/Validation.Rmd
 26afd60bb1cc8da5127b67e9ac9a7410 *inst/doc/Validation.html
@@ -27,7 +27,7 @@ d1fb7c6c3fd31f68ce360d49035d9c62 *man/powen.Rd
 c47d1eba88ad62844208bdaf7aa815ac *src/Integration.cpp
 e3d3cb360fbfdb3c6974e14eb5f09870 *src/Makevars
 be1e662cb63489d18d530245e3e0e314 *src/Makevars.win
-d0f5900da0222c71a5423a6d3f6129c2 *src/Owen.cpp
+655bc5f3812343cefb5eb1f37b9f71af *src/Owen.cpp
 f77f2cc75140d4a73a2d2dd7920d9b41 *src/RcppExports.cpp
 f607af1a3253a24f6b2aac58216f1e0d *src/Student_boost.cpp
 906290f75513eaa9d2bfabcd4e91262c *tests/testthat.R
@@ -35,7 +35,7 @@ f607af1a3253a24f6b2aac58216f1e0d *src/Student_boost.cpp
 77a6d9ea7698ebab5137c97cdaac97a6 *tests/testthat/test-OwenQ1_algo2.R
 93c8b031d8666db0cfc096e097983772 *tests/testthat/test-OwenQ2_algo1.R
 0de04e116fc667bb0629f7d123628425 *tests/testthat/test-OwenQ2_algo2.R
-5c4710c1be8b626dcf30954559e6b596 *tests/testthat/test-OwenT.R
+e8a7697a5e8d639c6f9f67a54d345272 *tests/testthat/test-OwenT.R
 53cc724f2a54cace4198181006eebdd9 *tests/testthat/test-pOwen_algo1.R
 52ecd9dcb737ba2d82a2c5754ddbb0c2 *tests/testthat/test-pOwen_algo2.R
 75ebc250786d18b83b1005b32f2c7e5f *tests/testthat/test-ptOwen.R

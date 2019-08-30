@@ -1,8 +1,8 @@
 Package: OwenQ
 Type: Package
 Title: Owen Q-Function
-Version: 1.0.1
-Date: 2019-08-29
+Version: 1.0.2
+Date: 2019-08-30
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Evaluates the Owen Q-function for an integer value of the degrees of freedom, by applying Owen's algorithm (1965) <doi:10.1093/biomet/52.3-4.437>. 
@@ -19,6 +19,6 @@ VignetteBuilder: knitr
 URL: https://github.com/stla/OwenQ
 BugReports: https://github.com/stla/OwenQ/issues
 NeedsCompilation: yes
-Packaged: 2019-08-30 07:35:00 UTC; SDL96354
+Packaged: 2019-08-30 16:57:59 UTC; SDL96354
 Repository: CRAN
-Date/Publication: 2019-08-30 08:50:02 UTC
+Date/Publication: 2019-08-30 21:40:16 UTC
