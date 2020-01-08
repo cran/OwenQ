@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -13,7 +12,7 @@
 
 <meta name="author" content="Stéphane Laurent" />
 
-<meta name="date" content="2019-08-30" />
+<meta name="date" content="2020-01-07" />
 
 <title>Owen cumulative functions</title>
 
@@ -23,7 +22,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -36,13 +35,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -306,7 +303,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Owen cumulative functions</h1>
 <h4 class="author">Stéphane Laurent</h4>
-<h4 class="date">2019-08-30</h4>
+<h4 class="date">2020-01-07</h4>
 
 
 <div id="TOC">
@@ -350,48 +347,48 @@ O_4(\nu, t_1, t_2, \delta_1, \delta_2) &amp; = \Pr(T_1 \geq t_1, T_2 \leq t_2).
 <div id="non-central-student-distribution" class="section level1">
 <h1>Non-central Student distribution</h1>
 <p>Owen (1965) also provided an algorithm to evaluate the cumulative distribution function of a univariate non-central Student distribution with an integer number of degrees of freedom. This evaluation is performed by the function <code>ptOwen</code> of the <code>OwenQ</code> package.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">nu=</span><span class="dv">3</span>, <span class="dt">delta=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">## [1] 0.1573494</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">pt</span>(<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">df=</span><span class="dv">3</span>, <span class="dt">ncp=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">## [1] 0.1573494</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">nu=</span><span class="dv">3</span>, <span class="dt">delta=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">## [1] 0.1573494</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">pt</span>(<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">df=</span><span class="dv">3</span>, <span class="dt">ncp=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">## [1] 0.1573494</span></a></code></pre></div>
 <p>It is known that the <code>pt</code> function is not reliable when the non-centrality parameter <code>ncp</code> is large. Below we compare the values given by <code>ptOwen</code> and <code>pt</code> to the value given by Wolfram|Alpha (returned by the command <code>N[CDF[NoncentralStudentTDistribution[4,70],80]]</code>):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">p1 &lt;-<span class="st"> </span><span class="kw">pt</span>(<span class="dt">q=</span><span class="dv">80</span>, <span class="dt">df=</span><span class="dv">4</span>, <span class="dt">ncp=</span><span class="dv">70</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">p2 &lt;-<span class="st"> </span><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">80</span>, <span class="dt">nu=</span><span class="dv">4</span>, <span class="dt">delta=</span><span class="dv">70</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">wolfram &lt;-<span class="st"> </span><span class="fl">0.54742763380700947685</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">p1 <span class="op">-</span><span class="st"> </span>wolfram</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">## [1] 0.02268711</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">p2 <span class="op">-</span><span class="st"> </span>wolfram</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">## [1] 3.330669e-16</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">p1 &lt;-<span class="st"> </span><span class="kw">pt</span>(<span class="dt">q=</span><span class="dv">80</span>, <span class="dt">df=</span><span class="dv">4</span>, <span class="dt">ncp=</span><span class="dv">70</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2">p2 &lt;-<span class="st"> </span><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">80</span>, <span class="dt">nu=</span><span class="dv">4</span>, <span class="dt">delta=</span><span class="dv">70</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">wolfram &lt;-<span class="st"> </span><span class="fl">0.54742763380700947685</span></a>
+<a class="sourceLine" id="cb2-4" title="4">p1 <span class="op">-</span><span class="st"> </span>wolfram</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">## [1] 0.02268711</span></a>
+<a class="sourceLine" id="cb2-6" title="6">p2 <span class="op">-</span><span class="st"> </span>wolfram</a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">## [1] 3.330669e-16</span></a></code></pre></div>
 </div>
 <div id="limitations" class="section level1">
 <h1>Limitations</h1>
 <p>When <code>q</code><span class="math inline">\(=\)</span><code>delta</code>, the value of <code>ptOwen(q, nu, delta)</code> should go to <code>0.5</code> as <code>nu</code> increases to infinity. The examples below show the failure of this expectation when <code>nu</code> is too large.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3500</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">## [1] 0.4986697</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3600</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">## [1] 0.4989289</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3650</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">## [1] 0.4522949</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3660</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">## [1] 0.3349762</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3670</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">## [1] 0.7607795</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3680</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">## [1] 0</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3500</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">## [1] 0.4986697</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3600</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">## [1] 0.4989289</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3650</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">## [1] 0.4522949</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3660</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">## [1] 0.3349762</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3670</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">## [1] 0.7607795</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="kw">ptOwen</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3680</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">## [1] 0</span></a></code></pre></div>
 <p>Since all Owen’s algorithms are somehow similar to the algorithm evaluating <code>ptOwen</code>, we can suspect that the other ones also suffer from certain limitations. In the other vignette, we investigate the reliability and the limitations of <code>OwenQ</code>.</p>
 <p>In order to do some comparisons, and thanks to the <code>BH</code> package, we have ported the <code>boost</code> implementation of the cumulative Student distribution to <code>OwenQ</code>. It is evaluated by the internal function <code>pt_boost</code>. We concluded that this function is highly reliable. In particular it does not suffer from the failures of <code>ptOwen</code> we have just shown:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3500</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">## [1] 0.4986697</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3600</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">## [1] 0.4987041</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3650</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">## [1] 0.4987206</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3660</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">## [1] 0.4987238</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3670</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">## [1] 0.4987271</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3680</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">## [1] 0.4987303</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3500</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">## [1] 0.4986697</span></a>
+<a class="sourceLine" id="cb4-3" title="3">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3600</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">## [1] 0.4987041</span></a>
+<a class="sourceLine" id="cb4-5" title="5">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3650</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">## [1] 0.4987206</span></a>
+<a class="sourceLine" id="cb4-7" title="7">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3660</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">## [1] 0.4987238</span></a>
+<a class="sourceLine" id="cb4-9" title="9">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3670</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">## [1] 0.4987271</span></a>
+<a class="sourceLine" id="cb4-11" title="11">OwenQ<span class="op">:::</span><span class="kw">pt_boost</span>(<span class="dt">q=</span><span class="dv">50</span>, <span class="dt">nu=</span><span class="dv">3680</span>, <span class="dt">delta=</span><span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">## [1] 0.4987303</span></a></code></pre></div>
 </div>
 <div id="application-to-equivalence-testing" class="section level1">
 <h1>Application to equivalence testing</h1>
@@ -429,44 +426,44 @@ O_4\bigl(n-1, t^\ast_{n-1}(\alpha), -t^\ast_{n-1}(\alpha), \delta_1, \delta_2\bi
 <h2>Inconclusive equivalence test</h2>
 <p>The result of the equivalence test is said to be <em>inconclusive</em> when only one of the bounds of the confidence interval falls into the interval <span class="math inline">\([\Delta_1, \Delta_2]\)</span>.</p>
 <p>The probability to get an inconclusive result can be obtained with the <code>OwenQ</code> package. We show and check that below with the help of simulations.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">Delta1 &lt;-<span class="st"> </span><span class="dv">-2</span>; Delta2 &lt;-<span class="st"> </span><span class="dv">2</span> </a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">mu &lt;-<span class="st"> </span><span class="dv">1</span>; sigma &lt;-<span class="st"> </span><span class="dv">6</span>; n &lt;-<span class="st"> </span>30L</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">nsims &lt;-<span class="st"> </span><span class="fl">1e6</span>L</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">equivalence &lt;-<span class="st"> </span>inconclusive &lt;-<span class="st"> </span><span class="kw">numeric</span>(nsims)</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="cf">for</span> (i <span class="cf">in</span> 1L<span class="op">:</span>nsims) {</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">  y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, mu, sigma)</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">  CI &lt;-<span class="st"> </span><span class="kw">t.test</span>(<span class="dt">x =</span> y, <span class="dt">conf.level =</span> <span class="dv">1-2</span><span class="op">*</span>alpha)<span class="op">$</span>conf.int</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">  equivalence[i] &lt;-<span class="st"> </span>(CI[<span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span>Delta1) <span class="op">&amp;&amp;</span><span class="st"> </span>(CI[<span class="dv">2</span>] <span class="op">&lt;</span><span class="st"> </span>Delta2)</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">  inconclusive[i] &lt;-<span class="st"> </span>((CI[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>Delta1) <span class="op">&amp;&amp;</span><span class="st"> </span>(CI[<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span>Delta1)) <span class="op">||</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">    </span>((CI[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>Delta2) <span class="op">&amp;&amp;</span><span class="st"> </span>(CI[<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span>Delta2))</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">}</a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">dof &lt;-<span class="st"> </span>n<span class="dv">-1</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">q &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>alpha, dof)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>n)<span class="op">*</span>sigma</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">delta1 &lt;-<span class="st"> </span>(mu<span class="op">-</span>Delta1)<span class="op">/</span>se; delta2 &lt;-<span class="st"> </span>(mu<span class="op">-</span>Delta2)<span class="op">/</span>se</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co"># probability to get equivalence</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="kw">mean</span>(equivalence)</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">## [1] 0.093057</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">powen4</span>(dof, q, <span class="op">-</span>q, delta1, delta2)</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">## [1] 0.09300963</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co"># probability to get inconclusive</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="kw">mean</span>(inconclusive)</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">## [1] 0.901266</a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw">ptOwen</span>(q, dof, delta2) <span class="op">-</span><span class="st"> </span><span class="kw">ptOwen</span>(<span class="op">-</span>q, dof, delta1) <span class="op">-</span><span class="st"> </span><span class="kw">powen4</span>(dof, q, <span class="op">-</span>q, delta1, delta2)</a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">## [1] 0.90139</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">Delta1 &lt;-<span class="st"> </span><span class="dv">-2</span>; Delta2 &lt;-<span class="st"> </span><span class="dv">2</span> </a>
+<a class="sourceLine" id="cb5-2" title="2">mu &lt;-<span class="st"> </span><span class="dv">1</span>; sigma &lt;-<span class="st"> </span><span class="dv">6</span>; n &lt;-<span class="st"> </span>30L</a>
+<a class="sourceLine" id="cb5-3" title="3">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb5-4" title="4">nsims &lt;-<span class="st"> </span><span class="fl">1e6</span>L</a>
+<a class="sourceLine" id="cb5-5" title="5">equivalence &lt;-<span class="st"> </span>inconclusive &lt;-<span class="st"> </span><span class="kw">numeric</span>(nsims)</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="cf">for</span> (i <span class="cf">in</span> 1L<span class="op">:</span>nsims) {</a>
+<a class="sourceLine" id="cb5-7" title="7">  y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, mu, sigma)</a>
+<a class="sourceLine" id="cb5-8" title="8">  CI &lt;-<span class="st"> </span><span class="kw">t.test</span>(<span class="dt">x =</span> y, <span class="dt">conf.level =</span> <span class="dv">1-2</span><span class="op">*</span>alpha)<span class="op">$</span>conf.int</a>
+<a class="sourceLine" id="cb5-9" title="9">  equivalence[i] &lt;-<span class="st"> </span>(CI[<span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span>Delta1) <span class="op">&amp;&amp;</span><span class="st"> </span>(CI[<span class="dv">2</span>] <span class="op">&lt;</span><span class="st"> </span>Delta2)</a>
+<a class="sourceLine" id="cb5-10" title="10">  inconclusive[i] &lt;-<span class="st"> </span>((CI[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>Delta1) <span class="op">&amp;&amp;</span><span class="st"> </span>(CI[<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span>Delta1)) <span class="op">||</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="st">    </span>((CI[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>Delta2) <span class="op">&amp;&amp;</span><span class="st"> </span>(CI[<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span>Delta2))</a>
+<a class="sourceLine" id="cb5-12" title="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">dof &lt;-<span class="st"> </span>n<span class="dv">-1</span></a>
+<a class="sourceLine" id="cb6-2" title="2">q &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>alpha, dof)</a>
+<a class="sourceLine" id="cb6-3" title="3">se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>n)<span class="op">*</span>sigma</a>
+<a class="sourceLine" id="cb6-4" title="4">delta1 &lt;-<span class="st"> </span>(mu<span class="op">-</span>Delta1)<span class="op">/</span>se; delta2 &lt;-<span class="st"> </span>(mu<span class="op">-</span>Delta2)<span class="op">/</span>se</a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co"># probability to get equivalence</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="kw">mean</span>(equivalence)</a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">## [1] 0.092927</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="kw">powen4</span>(dof, q, <span class="op">-</span>q, delta1, delta2)</a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">## [1] 0.09300963</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="co"># probability to get inconclusive</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="kw">mean</span>(inconclusive)</a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">## [1] 0.901587</span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="kw">ptOwen</span>(q, dof, delta2) <span class="op">-</span><span class="st"> </span><span class="kw">ptOwen</span>(<span class="op">-</span>q, dof, delta1) <span class="op">-</span><span class="st"> </span><span class="kw">powen4</span>(dof, q, <span class="op">-</span>q, delta1, delta2)</a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co">## [1] 0.90139</span></a></code></pre></div>
 </div>
 <div id="parallel-design" class="section level2">
 <h2>Parallel design</h2>
 <p>Now consider two independent samples <span class="math inline">\(x_i \sim_{\text{iid}} {\cal N}(\mu, \sigma^2)\)</span> for <span class="math inline">\(i=1, \ldots, n_1\)</span>. and <span class="math inline">\(y_i \sim_{\text{iid}} {\cal N}(\nu, \sigma^2)\)</span> for <span class="math inline">\(i=1, \ldots, n_2\)</span> and the alternative hypothesis <span class="math inline">\(H_1\colon\bigl\{|\mu-\nu| \leq \Delta\bigr\}\)</span>. The power of this test is evaluated by the function <code>powerTOST</code> below. The parameter <code>delta0</code> corresponds to the difference <span class="math inline">\(\mu-\nu\)</span>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">powerTOST &lt;-<span class="st"> </span><span class="cf">function</span>(alpha, delta0, Delta, sigma, n1, n2) {</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">  se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>n1 <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>n2) <span class="op">*</span><span class="st"> </span>sigma</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">  delta1 &lt;-<span class="st"> </span>(delta0 <span class="op">+</span><span class="st"> </span>Delta) <span class="op">/</span><span class="st"> </span>se</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">  delta2 &lt;-<span class="st"> </span>(delta0 <span class="op">-</span><span class="st"> </span>Delta) <span class="op">/</span><span class="st"> </span>se</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">  dof &lt;-<span class="st"> </span>n1 <span class="op">+</span><span class="st"> </span>n2 <span class="op">-</span><span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">  q &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha, dof)</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">  <span class="kw">powen4</span>(dof, q, <span class="op">-</span>q, delta1, delta2)</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">powerTOST &lt;-<span class="st"> </span><span class="cf">function</span>(alpha, delta0, Delta, sigma, n1, n2) {</a>
+<a class="sourceLine" id="cb7-2" title="2">  se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>n1 <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>n2) <span class="op">*</span><span class="st"> </span>sigma</a>
+<a class="sourceLine" id="cb7-3" title="3">  delta1 &lt;-<span class="st"> </span>(delta0 <span class="op">+</span><span class="st"> </span>Delta) <span class="op">/</span><span class="st"> </span>se</a>
+<a class="sourceLine" id="cb7-4" title="4">  delta2 &lt;-<span class="st"> </span>(delta0 <span class="op">-</span><span class="st"> </span>Delta) <span class="op">/</span><span class="st"> </span>se</a>
+<a class="sourceLine" id="cb7-5" title="5">  dof &lt;-<span class="st"> </span>n1 <span class="op">+</span><span class="st"> </span>n2 <span class="op">-</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb7-6" title="6">  q &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha, dof)</a>
+<a class="sourceLine" id="cb7-7" title="7">  <span class="kw">powen4</span>(dof, q, <span class="op">-</span>q, delta1, delta2)</a>
+<a class="sourceLine" id="cb7-8" title="8">}</a></code></pre></div>
 </div>
 </div>
 <div id="the-owen-t-function" class="section level1">
@@ -497,12 +494,12 @@ x^{\nu-1} e^{-\frac{x^2}{2}} \mathrm{d}x.
 O_2(n-1, k_e\sqrt{n}, -k_e\sqrt{n}, \delta, -\delta) = 1-\alpha
 \]</span> where <span class="math inline">\(\delta = \sqrt{n}z_{(1+p)/2}\)</span>.</p>
 <p>Therefore, the tolerance factor <span class="math inline">\(k_e\)</span> can be determined with the help of the <code>powen2</code> function of the <code>OwenQ</code> package. But it is more efficient to use the function <code>spowen2</code> for this purpose; <code>spowen2(nu, t, delta)</code> has the same value as <code>powen2(nu, t, -t, delta, -delta)</code> but it is evaluated more efficiently.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="fl">0.9</span>; alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">delta &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n)<span class="op">*</span><span class="kw">qnorm</span>((<span class="dv">1</span><span class="op">+</span>p)<span class="op">/</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="kw">uniroot</span>(<span class="cf">function</span>(ke) <span class="kw">spowen2</span>(n<span class="dv">-1</span>, ke<span class="op">*</span><span class="kw">sqrt</span>(n), delta) <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>alpha), </a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">        <span class="dt">lower=</span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha), <span class="dt">upper=</span><span class="dv">5</span>, <span class="dt">extendInt =</span> <span class="st">&quot;upX&quot;</span>, <span class="dt">tol=</span><span class="fl">1e-9</span>)<span class="op">$</span>root</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">## [1] 1.981513</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">p &lt;-<span class="st"> </span><span class="fl">0.9</span>; alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb8-2" title="2">n &lt;-<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb8-3" title="3">delta &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n)<span class="op">*</span><span class="kw">qnorm</span>((<span class="dv">1</span><span class="op">+</span>p)<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="kw">uniroot</span>(<span class="cf">function</span>(ke) <span class="kw">spowen2</span>(n<span class="dv">-1</span>, ke<span class="op">*</span><span class="kw">sqrt</span>(n), delta) <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>alpha), </a>
+<a class="sourceLine" id="cb8-5" title="5">        <span class="dt">lower=</span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha), <span class="dt">upper=</span><span class="dv">5</span>, <span class="dt">extendInt =</span> <span class="st">&quot;upX&quot;</span>, <span class="dt">tol=</span><span class="fl">1e-9</span>)<span class="op">$</span>root</a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="co">## [1] 1.981513</span></a></code></pre></div>
 <p>The <span class="math inline">\(k_e\)</span> factors are tabulated in Krishnamoorthy &amp; Mathew’s book.</p>
 </div>
 <div id="internal-functions-numerical-integration" class="section level1">
