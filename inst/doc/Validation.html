@@ -12,7 +12,7 @@
 
 <meta name="author" content="Stéphane Laurent" />
 
-<meta name="date" content="2021-09-19" />
+<meta name="date" content="2022-01-05" />
 
 <title>Is OwenQ reliable?</title>
 
@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <h1 class="title toc-ignore">Is OwenQ reliable?</h1>
 <h4 class="author">Stéphane Laurent</h4>
-<h4 class="date">2021-09-19</h4>
+<h4 class="date">2022-01-05</h4>
 
 
 <div id="TOC">
@@ -168,7 +168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 <div id="purpose" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Purpose</h1>
+<h1><span class="header-section-number">1</span> Purpose</h1>
 <p>The purpose of this vignette is to assess the correctness of the functions of the <code>OwenQ</code> package.</p>
 <p>As said in the main vignette, the fourth Owen cumulative function <span class="math inline">\(O_4\)</span>, implemented under the name <code>powen4</code> allows to evaluate the power of equivalence tests. This is perhaps the main application of the <code>OwenQ</code> package and we will particularly focus on this situation.</p>
 <p>Our strategy runs as follows:</p>
@@ -181,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The folder <code>tests/testthat</code> of the <code>OwenQ</code> package contains many comparisons with Wolfram|Alpha. The results we obtain with <code>OwenQ</code> are always the same as the ones obtained with Wolfram|Alpha up to a tolerance of at least <span class="math inline">\(10\)</span> decimal digits.</p>
 </div>
 <div id="owen-t-function-owent" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Owen <span class="math inline">\(T\)</span>-function (<code>OwenT</code>)</h1>
+<h1><span class="header-section-number">2</span> Owen <span class="math inline">\(T\)</span>-function (<code>OwenT</code>)</h1>
 <p>The Owen <span class="math inline">\(T\)</span>-function is implemented under the name <code>OwenT</code>. This is a port of the function <code>owens_t</code> of the C++ <code>special_functions</code> library included in the <code>boost</code> set of libraries. Some details about the C++ implementation are <a href="https://www.boost.org/doc/libs/1_77_0/libs/math/doc/html/math_toolkit/owens_t.html">available here</a>.</p>
 <p>The libraries provided by <code>boost</code> are peer-reviewed, and this is enough to trust the reliability of <code>OwenT</code>. Nevertheless, below we compare the results of <code>OwenT</code> to the six values given in Patefield’s article, up to <span class="math inline">\(14\)</span> decimal digits. We have also checked that Wolfram|Alpha gives these values.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>testData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -204,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We get the same results with <code>OwenT</code>.</p>
 </div>
 <div id="owen-q-functions-comparing-a-couple-of-values" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Owen <span class="math inline">\(Q\)</span>-functions: comparing a couple of values</h1>
+<h1><span class="header-section-number">3</span> Owen <span class="math inline">\(Q\)</span>-functions: comparing a couple of values</h1>
 <p>The two Owen <span class="math inline">\(Q\)</span>-functions <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_2\)</span> are defined by: <span class="math display">\[
 Q_1(\nu, t, \delta, R) = 
 \frac{1}{\Gamma\left(\frac{\nu}{2}\right)2^{\frac12(\nu-2)}}
@@ -255,7 +255,7 @@ x^{\nu-1} e^{-\frac{x^2}{2}} \mathrm{d}x.
 <p>The two values are identical up to <span class="math inline">\(13\)</span> digits.</p>
 </div>
 <div id="fourth-owen-cumulative-function-o_4-powen4" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Fourth Owen cumulative function <span class="math inline">\(O_4\)</span> (<code>powen4</code>)</h1>
+<h1><span class="header-section-number">4</span> Fourth Owen cumulative function <span class="math inline">\(O_4\)</span> (<code>powen4</code>)</h1>
 <p>As seen in the other vignette, the fourth Owen cumulative function <span class="math inline">\(O_4\)</span>, implemented under the name <code>powen4</code>, can be used to evaluate the power of equivalence tests.</p>
 <p>The <code>powerTOST</code> function below returns the power of the equivalence test for a so-called parallel design with equal variances, when considering the alternative hypothesis <span class="math inline">\(H_1\colon\{-\Delta &lt; \delta_0 &lt; \Delta \}\)</span>, where <span class="math inline">\(\delta_0\)</span> denotes the difference between the two means. This function takes as arguments the significance level <span class="math inline">\(\alpha\)</span>, the difference <span class="math inline">\(\delta_0\)</span> between the two means, the threshold <span class="math inline">\(\Delta\)</span>, the common standard deviation <span class="math inline">\(\sigma\)</span> of the two samples, and the two sample sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>powerTOST <span class="ot">&lt;-</span> <span class="cf">function</span>(alpha, delta0, Delta, sigma, n1, n2, <span class="at">algo=</span><span class="dv">2</span>) {</span>
@@ -269,7 +269,7 @@ x^{\nu-1} e^{-\frac{x^2}{2}} \mathrm{d}x.
 <p>As you can see, the <code>powen4</code> function has an argument <code>algo</code>. This is also the case for the other Owen functions, except for <code>ptOwen</code>. The <code>algo</code> argument can take two values, <code>1</code> or <code>2</code>. Th default value is <code>algo=2</code>, and as we will see later, the evaluation is more reliable with this option. The value of <code>algo</code> corresponds to a small difference in the algorithm. With <code>algo=1</code>, the evaluation is a bit faster. And we will see that <code>powerTOST</code><br />
 is reliable for <code>algo=1</code> when the value of <code>n1+n2</code> is not too large.</p>
 <div id="comparisons-with-sas" class="section level2" number="4.1">
-<h2 number="4.1"><span class="header-section-number">4.1</span> Comparisons with SAS</h2>
+<h2><span class="header-section-number">4.1</span> Comparisons with SAS</h2>
 <p>The table shown below contains <span class="math inline">\(100\)</span> results of power calculations with SAS version 9.4, for a total sample size <span class="math inline">\(n_1+n_2\)</span> going from <span class="math inline">\(20\)</span> to <span class="math inline">\(1200\)</span>. The results are rounded to <span class="math inline">\(5\)</span> decimal digits.</p>
 <table>
 <thead>
@@ -1322,7 +1322,7 @@ is reliable for <code>algo=1</code> when the value of <code>n1+n2</code> is not 
 <!-- In the next section, we will see that we get the same results as the ones of `powen4` with another, totally different implementation of $O_4$. -->
 </div>
 <div id="comparison-with-numerical-integration" class="section level2" number="4.2">
-<h2 number="4.2"><span class="header-section-number">4.2</span> Comparison with numerical integration</h2>
+<h2><span class="header-section-number">4.2</span> Comparison with numerical integration</h2>
 <p>The <code>ipowen4</code> internal function of the <code>OwenQ</code> package evaluates the fourth Owen cumulative function <span class="math inline">\(O_4\)</span> by a powerful numerical integration implemented in C++ (with the package <code>RcppNumerical</code>). Thus we have two completely different implementations of <span class="math inline">\(O_4\)</span>. The <code>ipowerTOST</code> function below is obtained by replacing <code>powen4</code> with <code>ipowen4</code> in <code>powerTOST</code>. We will compare the results of <code>powerTOST</code> with the ones of <code>ipowerTOST</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ipowerTOST <span class="ot">&lt;-</span> <span class="cf">function</span>(alpha, delta0, Delta, sigma, n1, n2) {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2) <span class="sc">*</span> sigma</span>
@@ -1333,7 +1333,7 @@ is reliable for <code>algo=1</code> when the value of <code>n1+n2</code> is not 
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  OwenQ<span class="sc">:::</span><span class="fu">ipowen4</span>(dof, q, <span class="sc">-</span>q, delta1, delta2)</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div id="failures-and-successes-of-powen4" class="section level3" number="4.2.1">
-<h3 number="4.2.1"><span class="header-section-number">4.2.1</span> Failures and successes of <code>powen4</code></h3>
+<h3><span class="header-section-number">4.2.1</span> Failures and successes of <code>powen4</code></h3>
 <ul>
 <li>For <span class="math inline">\(n_1=n_2=1000\)</span>, <span class="math inline">\(\alpha=0.05\)</span>, <span class="math inline">\(\delta=0\)</span>, <span class="math inline">\(\Delta=5\)</span>, the <code>powen4</code> function with the option <code>algo=1</code> abnormally takes some negative values:</li>
 </ul>
@@ -1379,7 +1379,7 @@ is reliable for <code>algo=1</code> when the value of <code>n1+n2</code> is not 
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0</span></span></code></pre></div>
 </div>
 <div id="comparisons-for-n_1n_2-leq-1200" class="section level3" number="4.2.2">
-<h3 number="4.2.2"><span class="header-section-number">4.2.2</span> Comparisons for <span class="math inline">\(n_1+n_2 \leq 1200\)</span></h3>
+<h3><span class="header-section-number">4.2.2</span> Comparisons for <span class="math inline">\(n_1+n_2 \leq 1200\)</span></h3>
 <p>Below we compare the results returned by <code>powerTOST</code> to the ones returned by <code>ipowerTOST</code> for the parameters given in the <code>SAS</code> dataset.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> ipower <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">nrow</span>(SAS))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(SAS)) {</span>
@@ -1423,7 +1423,7 @@ is reliable for <code>algo=1</code> when the value of <code>n1+n2</code> is not 
 </div>
 </div>
 <div id="conclusion" class="section level2" number="4.3">
-<h2 number="4.3"><span class="header-section-number">4.3</span> Conclusion</h2>
+<h2><span class="header-section-number">4.3</span> Conclusion</h2>
 <ul>
 <li><p>The <code>powen4</code> function with option <code>algo=1</code> seems to return correct values for <span class="math inline">\(\nu \leq 1200\)</span>.</p></li>
 <li><p>The <code>powen4</code> function with option <code>algo=2</code> allows higher values of <span class="math inline">\(\nu\)</span>.</p></li>
@@ -1432,7 +1432,7 @@ is reliable for <code>algo=1</code> when the value of <code>n1+n2</code> is not 
 </div>
 </div>
 <div id="other-owen-cumulative-functions" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Other Owen cumulative functions</h1>
+<h1><span class="header-section-number">5</span> Other Owen cumulative functions</h1>
 <p>We previously validated the <code>powen4</code> function for the <span class="math inline">\(100\)</span> scenarios of the dataset <code>SAS</code>.</p>
 <p>Now we test the functions <code>powen1</code>, <code>powen2</code> and <code>powen3</code> by checking the equality <span class="math display">\[
 O_1(\nu, t_1, t_2, \delta_1, \delta_2) + O_2(\nu, t_1, t_2, \delta_1, \delta_2) 
@@ -1467,7 +1467,7 @@ O_3(\nu, t_1, t_2, \delta_1, \delta_2) + O_4(\nu, t_1, t_2, \delta_1, \delta_2)
 <p>We find that each of the <span class="math inline">\(100\)</span> sums is equal to <span class="math inline">\(1\)</span> up to a tolerance of <span class="math inline">\(14\)</span> digits.</p>
 </div>
 <div id="first-owen-q-function-q_1-owenq1" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> First Owen <span class="math inline">\(Q\)</span>-function <span class="math inline">\(Q_1\)</span> (<code>OwenQ1</code>)</h1>
+<h1><span class="header-section-number">6</span> First Owen <span class="math inline">\(Q\)</span>-function <span class="math inline">\(Q_1\)</span> (<code>OwenQ1</code>)</h1>
 <p>We previously validated the <code>powen4</code> function (implementation of the fourth Owen cumulative function <span class="math inline">\(O_4\)</span>) for the <span class="math inline">\(100\)</span> scenarios of the dataset <code>SAS</code>.<br />
 Now, to test <code>OwenQ1</code>, we will use the following equality:</p>
 <p><span class="math display">\[
@@ -1499,12 +1499,12 @@ Q_1\left(\nu, t_2, \delta_2,
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">n2 =</span> SAS<span class="sc">$</span>n2[i]</span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">round</span>(power, <span class="dv">14</span>), <span class="fu">round</span>(power2, <span class="dv">14</span>))</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span></code></pre></div>
-<p>The values rounded to <span class="math inline">\(14\)</span> digits are the same as the ones we previously obtained with <code>powen4</code>.</p>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">abs</span>(power <span class="sc">-</span> power2) <span class="sc">&lt;</span> <span class="fl">1e-9</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
+<p>The values rounded to <span class="math inline">\(9\)</span> digits are the same as the ones we previously obtained with <code>powen4</code>.</p>
 </div>
 <div id="second-owen-q-function-q_2-owenq2" class="section level1" number="7">
-<h1 number="7"><span class="header-section-number">7</span> Second Owen <span class="math inline">\(Q\)</span>-function <span class="math inline">\(Q_2\)</span> (<code>OwenQ2</code>)</h1>
+<h1><span class="header-section-number">7</span> Second Owen <span class="math inline">\(Q\)</span>-function <span class="math inline">\(Q_2\)</span> (<code>OwenQ2</code>)</h1>
 <p>We previously validated <code>powen2</code> for the <span class="math inline">\(100\)</span> scenarios of the dataset <code>SAS</code>. Now we test the <code>OwenQ2</code> function by checking the equality <span class="math display">\[
 O_2(\nu, t_1, t_2, \delta_1, \delta_2) = 
 Q_2\left(\nu, t_1, \delta_1, 
@@ -1541,7 +1541,7 @@ Q_2\left(\nu, t_1, \delta_1,
 <p>We find that each of the <span class="math inline">\(100\)</span> equalities hold true up to a tolerance of <span class="math inline">\(15\)</span> digits.</p>
 </div>
 <div id="student-cumulative-distribution-function-ptowen" class="section level1" number="8">
-<h1 number="8"><span class="header-section-number">8</span> Student cumulative distribution function (<code>ptOwen</code>)</h1>
+<h1><span class="header-section-number">8</span> Student cumulative distribution function (<code>ptOwen</code>)</h1>
 <p>We finally test <code>ptOwen</code>, the implementation of the cumulative distribution function of the noncentral Student distribution.<br />
 If <span class="math inline">\(T_1\)</span> follows the noncentral Student distribution with number of degrees of freedom <span class="math inline">\(\nu\)</span> and noncentrality parameter <span class="math inline">\(\delta_1\)</span>, then for any <span class="math inline">\(t_1\)</span> the equality <span class="math display">\[
 \Pr(T_1 \leq t_1) = O_1(\nu, t_1, t_2, \delta_1, \delta_2) + O_2(\nu, t_1, t_2, \delta_1, \delta_2)
@@ -1573,7 +1573,7 @@ If <span class="math inline">\(T_1\)</span> follows the noncentral Student distr
 <p>For each scenario, the equality holds up to a tolerance of <span class="math inline">\(15\)</span> digits.</p>
 </div>
 <div id="references" class="section level1" number="9">
-<h1 number="9"><span class="header-section-number">9</span> References</h1>
+<h1><span class="header-section-number">9</span> References</h1>
 <ul>
 <li><p>Patefield, M. (2000). <em>Fast and Accurate Calculation of Owen’s T Function.</em> Journal of Statistical Software 5 (5), 1-25.</p></li>
 <li><p>Owen, D. B. (1965). <em>A special case of a bivariate noncentral t-distribution.</em> Biometrika 52, 437-446.</p></li>

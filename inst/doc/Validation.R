@@ -337,7 +337,7 @@ for (i in 1:nrow(SAS)) {
       n2 = SAS$n2[i]
     )
 }
-identical(round(power, 14), round(power2, 14))
+all(abs(power - power2) < 1e-9)
 
 ## -----------------------------------------------------------------------------
 g <- function(alpha, delta0, Delta, sigma, n1, n2) {

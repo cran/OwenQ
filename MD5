@@ -1,6 +1,7 @@
-65f8610b4096b152ae55f713b9e7e512 *DESCRIPTION
+077eeae9109123822c17be98e51da97b *DESCRIPTION
+828f4b323887ff71bddf527eb39726a1 *LICENSE
 0e32da3106ce0a41af631ee21852cd99 *NAMESPACE
-7610a92bcacb466a40e879807cfb63eb *NEWS.md
+02e3d8bbf4228f353056edfff35ab6a2 *NEWS.md
 31c0bf707b795d6e416cbc421460749e *R/OwenQ.R
 d024a043e569d57fe5a085de0b7bf1a9 *R/OwenT.R
 998859989f3f6a9560a1465534151d85 *R/RcppExports.R
@@ -10,13 +11,13 @@ ce31aa3ebacc15039d5fb892b33084f9 *R/pOwen.R
 6a2e55915a4bc0d5d4990acb5151992f *R/psbt.R
 45e322ad22a7d701ffdd334bf2291879 *R/specialOwen2.R
 48dd39a002c5bcb96ada52961ac9318d *README.md
-7a8bdd644ca52118689d01a3207e7c8e *build/vignette.rds
+3765916d81206fe3533dfabb5f82414a *build/vignette.rds
 4238b13321292ca57aef92325065c5ca *inst/doc/OwenQ.R
 d0fc7e3c2dd5d0485431df1e64ea3d39 *inst/doc/OwenQ.Rmd
-44b1ba235bc423aa66e93cdfca62f3c3 *inst/doc/OwenQ.html
-dfa3e72dbcf0cb4a3c83742058d82e9b *inst/doc/Validation.R
-43081e836a44fb1a6ad564c41955b6c4 *inst/doc/Validation.Rmd
-7f03af21d796e973dbebe954486fe3aa *inst/doc/Validation.html
+a626db503fcb66a2b99d25d53cec71ba *inst/doc/OwenQ.html
+aff95007f636115afb5c08a4ed02332d *inst/doc/Validation.R
+b51f6394ae690c000d1ddd802c2f350c *inst/doc/Validation.Rmd
+300e3ff25b5e03185c0c17aee009263a *inst/doc/Validation.html
 f0b168894ef0e178c6d5cee61bce5716 *man/OwenQ1.Rd
 4dca289464a6422b7c468f70b941747f *man/OwenQ2.Rd
 b6727f63366dc6481289e78ed2c211bf *man/OwenT.Rd
@@ -41,7 +42,7 @@ edd9448411a962113222d5ac5c04cc15 *tests/testthat/test-pOwen_algo2.R
 77112b31dc89ac45871114a809efc318 *tests/testthat/test-ptOwen.R
 0d8072c442282eca159f89825a0af06f *tests/testthat/test-spowen2.R
 d0fc7e3c2dd5d0485431df1e64ea3d39 *vignettes/OwenQ.Rmd
-43081e836a44fb1a6ad564c41955b6c4 *vignettes/Validation.Rmd
+b51f6394ae690c000d1ddd802c2f350c *vignettes/Validation.Rmd
 7d1b4aa8c9c8df74fc36795e902481f6 *vignettes/wolfram_OwenQ1.png
 90e2507a507dbe83eebb77e97d73dd4a *vignettes/wolfram_OwenQ1_1000.png
 31357b722d6a13c5605a23f5c7569826 *vignettes/wolfram_OwenQ2.png
