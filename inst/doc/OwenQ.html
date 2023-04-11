@@ -12,7 +12,7 @@
 
 <meta name="author" content="Stéphane Laurent" />
 
-<meta name="date" content="2023-01-27" />
+<meta name="date" content="2023-04-11" />
 
 <title>Owen cumulative functions</title>
 
@@ -340,7 +340,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Owen cumulative functions</h1>
 <h4 class="author">Stéphane Laurent</h4>
-<h4 class="date">2023-01-27</h4>
+<h4 class="date">2023-04-11</h4>
 
 
 <div id="TOC">
@@ -548,12 +548,12 @@ help of simulations.</p>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>delta1 <span class="ot">&lt;-</span> (mu<span class="sc">-</span>Delta1)<span class="sc">/</span>se; delta2 <span class="ot">&lt;-</span> (mu<span class="sc">-</span>Delta2)<span class="sc">/</span>se</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># probability to get equivalence</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(equivalence)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.093113</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.092532</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">powen4</span>(dof, q, <span class="sc">-</span>q, delta1, delta2)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.09300963</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># probability to get inconclusive</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(inconclusive)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.901309</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.901865</span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ptOwen</span>(q, dof, delta2) <span class="sc">-</span> <span class="fu">ptOwen</span>(<span class="sc">-</span>q, dof, delta1) <span class="sc">-</span> <span class="fu">powen4</span>(dof, q, <span class="sc">-</span>q, delta1, delta2)</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.90139</span></span></code></pre></div>
 </div>
